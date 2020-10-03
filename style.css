@@ -14,9 +14,14 @@
   position: absolute;
   left: 200px;
   top: 200px;
+<<<<<<< Updated upstream
   /* transform: translate(-50%, -50%); */
   width: 10vw;
   height: 25vh;
+=======
+  width: 300px;
+  height: 300px;
+>>>>>>> Stashed changes
   box-shadow: -4px 6px 3px rgba(20, 20, 20, 0.7);
   z-index: 3;
 }
@@ -34,3 +39,89 @@
 #window-header:hover {
   cursor: move;
 }
+<<<<<<< Updated upstream
+=======
+
+/*resizers style*/
+.NS,
+.EW,
+.SW,
+.NE {
+  z-index: 1;
+  background-color: black;
+  position: absolute;
+}
+
+/*appropriate cursors on hovers*/
+.NS:hover {
+  cursor: ns-resize;
+}
+
+.EW:hover {
+  cursor: ew-resize;
+}
+
+.SW:hover {
+  cursor: sw-resize;
+}
+
+.NE:hover {
+  cursor: nw-resize;
+}
+
+/*resizers starting size*/
+.NS {
+  width: 10vw;
+  height: 5px;
+}
+
+.EW {
+  width: 5px;
+  height: 25vh;
+}
+
+.SW,
+.NE {
+  background-color: coral;
+  width: 10px;
+  height: 10px;
+}
+
+/*Placing each resizer in it's place*/
+
+#right {
+  right: -5px;
+}
+
+#top {
+  top: -5px;
+}
+
+#bottom {
+  bottom: -5px;
+}
+
+#left {
+  left: -5px;
+}
+
+#top-left {
+  top: -5px;
+  left: -5px;
+}
+
+#top-right {
+  top: -5px;
+  right: -5px;
+}
+
+#bottom-right {
+  bottom: -5px;
+  right: -5px;
+}
+
+#bottom-left {
+  bottom: -5px;
+  left: -5px;
+}
+>>>>>>> Stashed changes
