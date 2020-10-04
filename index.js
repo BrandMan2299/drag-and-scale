@@ -1,4 +1,4 @@
-dragAndResizeElement(document.getElementById("window"));
+dragAndResizeElement(document.getElementById("main"));
 
 function dragAndResizeElement(element) {
   let pos1 = 0,
@@ -50,15 +50,15 @@ function dragAndResizeElement(element) {
     let newY = element.offsetTop - pos2;
     //check new position does not cross bounds:
     if (
-      playgroundsBounds.left + 5 <= newX &&
-      playgroundsBounds.right - 5 - element.offsetWidth >= newX
+      playgroundsBounds.left <= newX &&
+      playgroundsBounds.right - element.offsetWidth >= newX
     ) {
       // set the element's new X position:
       element.style.left = element.offsetLeft - pos1 + "px";
     }
     if (
-      playgroundsBounds.top + 5 <= newY &&
-      playgroundsBounds.bottom - 5 - element.offsetHeight >= newY
+      playgroundsBounds.top <= newY &&
+      playgroundsBounds.bottom - element.offsetHeight >= newY
     ) {
       // set the element's new Y position:
       element.style.top = element.offsetTop - pos2 + "px";
@@ -110,12 +110,12 @@ function dragAndResizeElement(element) {
     // set the element's new size:
     if (
       height &&
-      playgroundsBounds.top + 5 <= newY &&
-      playgroundsBounds.bottom - 5 - element.offsetHeight >= newY
+      playgroundsBounds.top <= newY &&
+      playgroundsBounds.bottom - element.offsetHeight >= newY
     ) {
       if (trigererId.match(/bottom/)) {
         //if new size is less than 100px don't resize
-        if (element.offsetHeight - pos2 < 100) return;
+        if (element.offsetHeight - pos2 < 150) return;
         //change height of window
         element.style.height = element.offsetHeight - pos2 + "px";
         //change height of left and right resizers
@@ -125,7 +125,7 @@ function dragAndResizeElement(element) {
       }
       if (trigererId.match(/top/)) {
         //if new size is less than 100px don't resize
-        if (element.offsetHeight - pos2 * -1 < 100) return;
+        if (element.offsetHeight - pos2 * -1 < 150) return;
         //change height of window
         element.style.height = element.offsetHeight - pos2 * -1 + "px";
         //change height of left and right resizers
@@ -138,12 +138,12 @@ function dragAndResizeElement(element) {
     }
     if (
       width &&
-      playgroundsBounds.left + 5 <= newX &&
-      playgroundsBounds.right - 5 - element.offsetWidth >= newX
+      playgroundsBounds.left <= newX &&
+      playgroundsBounds.right - element.offsetWidth >= newX
     ) {
       if (trigererId.match(/right/)) {
         //if new size is less than 100px don't resize
-        if (element.offsetWidth - pos1 < 100) return;
+        if (element.offsetWidth - pos1 < 150) return;
         //change width of window
         element.style.width = element.offsetWidth - pos1 + "px";
         //change width of bottom and top resizers
@@ -153,7 +153,7 @@ function dragAndResizeElement(element) {
       }
       if (trigererId.match(/left/)) {
         //if new size is less than 100px don't resize
-        if (element.offsetWidth - pos1 * -1 < 100) return;
+        if (element.offsetWidth - pos1 * -1 < 150) return;
         //change width of window
         element.style.width = element.offsetWidth - pos1 * -1 + "px";
         //change width of bottom and top resizers

@@ -9,28 +9,29 @@
   z-index: -1;
 }
 
-#window {
+#main {
   background-color: rgb(210, 210, 210);
   position: absolute;
   left: 200px;
   top: 200px;
-  width: 10vw;
-  height: 25vh;
+  width: 200px;
+  height: 200px;
   box-shadow: -4px 6px 3px rgba(20, 20, 20, 0.7);
 }
 
-#window-header {
+#main-header {
   background-color: rgb(70, 70, 70);
   position: relative;
   width: inherit;
   margin: auto;
+  padding: 8px 0;
   max-height: 20%;
   font-size: 2vh;
   text-align: center;
   color: white;
 }
 
-#window-header:hover {
+#main-header:hover {
   cursor: move;
 }
 
@@ -63,13 +64,13 @@
 
 /*resizers starting size*/
 .NS {
-  width: 10vw;
+  width: 200px;
   height: 5px;
 }
 
 .EW {
   width: 5px;
-  height: 25vh;
+  height: 200px;
 }
 
 .SW,
@@ -82,37 +83,22 @@
 /*Placing each resizer in it's place*/
 
 #right {
-  right: -5px;
-}
-
-#top {
-  top: -5px;
+  right: 0;
 }
 
 #bottom {
-  bottom: -5px;
-}
-
-#left {
-  left: -5px;
-}
-
-#top-left {
-  top: -5px;
-  left: -5px;
+  bottom: 0;
 }
 
 #top-right {
-  top: -5px;
-  right: -5px;
+  right: 0;
 }
 
 #bottom-right {
-  bottom: -5px;
-  right: -5px;
+  bottom: 0;
+  right: 0;
 }
 
 #bottom-left {
-  bottom: -5px;
-  left: -5px;
+  bottom: 0;
 }
