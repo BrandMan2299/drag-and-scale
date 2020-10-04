@@ -10,9 +10,9 @@ function dragAndResizeElement(element) {
     .querySelector("#playground")
     .getBoundingClientRect();
 
-  if (document.getElementById("header")) {
+  if (document.getElementById(element.id + "-header")) {
     // if present, the header is where you move the DIV from:
-    document.getElementById("header").onmousedown = dragMouseDown;
+    document.getElementById(element.id + "-header").onmousedown = dragMouseDown;
   } else {
     // otherwise, move the DIV from anywhere inside the DIV:
     element.onmousedown = dragMouseDown;
@@ -108,14 +108,17 @@ function dragAndResizeElement(element) {
     let newX = element.offsetLeft - pos1;
     let newY = element.offsetTop - pos2;
     // set the element's new size:
-    if (
-      height &&
-      playgroundsBounds.top <= newY &&
-      playgroundsBounds.bottom - element.offsetHeight >= newY
-    ) {
+    if (height) {
       if (trigererId.match(/bottom/)) {
         //if new size is less than 100px don't resize
         if (element.offsetHeight - pos2 < 150) return;
+        //if new size will cross bounds don't resize
+        if (
+          pos2 < 0 &&
+          element.offsetHeight + element.offsetTop - pos2 >=
+            playgroundsBounds.bottom
+        )
+          return;
         //change height of window
         element.style.height = element.offsetHeight - pos2 + "px";
         //change height of left and right resizers
@@ -126,6 +129,9 @@ function dragAndResizeElement(element) {
       if (trigererId.match(/top/)) {
         //if new size is less than 100px don't resize
         if (element.offsetHeight - pos2 * -1 < 150) return;
+        //if new size will cross bounds don't resize
+        if (pos2 > 0 && element.offsetTop - pos2 <= playgroundsBounds.top)
+          return;
         //change height of window
         element.style.height = element.offsetHeight - pos2 * -1 + "px";
         //change height of left and right resizers
@@ -136,14 +142,17 @@ function dragAndResizeElement(element) {
         element.style.top = element.offsetTop - pos2 + "px";
       }
     }
-    if (
-      width &&
-      playgroundsBounds.left <= newX &&
-      playgroundsBounds.right - element.offsetWidth >= newX
-    ) {
+    if (width) {
       if (trigererId.match(/right/)) {
         //if new size is less than 100px don't resize
         if (element.offsetWidth - pos1 < 150) return;
+        //if new size will cross bounds don't resize
+        if (
+          pos1 < 0 &&
+          element.offsetLeft + element.offsetWidth - pos1 >=
+            playgroundsBounds.right
+        )
+          return;
         //change width of window
         element.style.width = element.offsetWidth - pos1 + "px";
         //change width of bottom and top resizers
@@ -154,6 +163,9 @@ function dragAndResizeElement(element) {
       if (trigererId.match(/left/)) {
         //if new size is less than 100px don't resize
         if (element.offsetWidth - pos1 * -1 < 150) return;
+        //if new size will cross bounds don't resize
+        if (pos1 > 0 && element.offsetLeft - pos1 <= playgroundsBounds.left)
+          return;
         //change width of window
         element.style.width = element.offsetWidth - pos1 * -1 + "px";
         //change width of bottom and top resizers
