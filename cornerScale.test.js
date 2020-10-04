@@ -1,8 +1,8 @@
 const puppeteer = require("puppeteer");
 const url =
-  "file:///C:/Users/gilad/Desktop/scaleUp/LavaDragons/DragableScaleableChalenge/drag-and-scale/playground.html";
+  "file:///C:/Users/gilad/Desktop/scaleUp/LavaDragons/DragableScaleableChalenge/drag-and-scale/index.html";
 //'file://' + __dirname + '/../_cloned-app/index.html'
-let id = "#window";
+let id = "#main";
 
 describe("The object should be scalable by dragging the corners", () => {
   const cornersLitterals = ["topRight", "topLeft", "bottomLeft", "bottomRight"];
@@ -59,8 +59,8 @@ describe("The object should be scalable by dragging the corners", () => {
         let initialWidth = width;
         let initialHeight = height;
         let corner = eval(cor);
-        let startingX = Left ? corner.x + 0 : corner.x - 0;
-        let startingY = Top ? corner.y + 0 : corner.y - 0;
+        let startingX = Left ? corner.x + 2 : corner.x - 2;
+        let startingY = Top ? corner.y + 2 : corner.y - 2;
         let targetX = Left ? corner.x - 75 : corner.x + 75;
         let targetY = Top ? corner.y - 75 : corner.y + 75;
         await page.mouse.move(startingX, startingY);
@@ -90,8 +90,8 @@ describe("The object should be scalable by dragging the corners", () => {
         let initialWidth = width;
         let initialHeight = height;
         let corner = eval(cor);
-        let startingX = Left ? corner.x + 0 : corner.x - 0;
-        let startingY = Top ? corner.y + 0 : corner.y - 0;
+        let startingX = Left ? corner.x + 2 : corner.x - 2;
+        let startingY = Top ? corner.y + 2 : corner.y - 2;
         let targetX = Left ? corner.x + 75 : corner.x - 75;
         let targetY = Top ? corner.y + 75 : corner.y - 75;
         await page.mouse.move(startingX, startingY);
@@ -121,17 +121,17 @@ describe("The object should be scalable by dragging the corners", () => {
         let initialWidth = width;
         let initialHeight = height;
         let [action, direction] = axis.split(" ");
-        await page.mouse.move(bottomRight.x - 0, bottomRight.y - 0);
+        await page.mouse.move(bottomRight.x - 2, bottomRight.y - 2);
         await page.mouse.down();
         let targetX =
           direction === "Vertically"
-            ? bottomRight.x - 0
+            ? bottomRight.x - 2
             : action === "Enlarge"
             ? bottomRight.x + 75
             : bottomRight.x - 75;
         let targetY =
           direction === "Horizantly"
-            ? bottomRight.y - 0
+            ? bottomRight.y - 2
             : action === "Enlarge"
             ? bottomRight.y + 75
             : bottomRight.y - 75;
@@ -167,15 +167,15 @@ describe("The object should be scalable by dragging the corners", () => {
     let min = 15;
     test("Can't shrink to much horizantly", async (done) => {
       let { bottomRight, bottomLeft } = await getMesures();
-      await page.mouse.move(bottomRight.x - 0, bottomRight.y - 0);
+      await page.mouse.move(bottomRight.x - 2, bottomRight.y - 2);
       await page.mouse.down();
       await page.mouse.move(bottomLeft.x, bottomLeft.y);
       await page.mouse.up();
       let newMesures = await getMesures();
       expect(newMesures.width).toBeGreaterThanOrEqual(min);
       await page.mouse.move(
-        newMesures.bottomRight.x - 0,
-        newMesures.bottomRight.y - 0
+        newMesures.bottomRight.x - 2,
+        newMesures.bottomRight.y - 2
       );
       await page.mouse.down();
       await page.mouse.move(bottomRight.x, bottomRight.y);
@@ -184,15 +184,15 @@ describe("The object should be scalable by dragging the corners", () => {
     });
     test("Can't shrink to much vertically", async (done) => {
       let { bottomRight, topRight } = await getMesures();
-      await page.mouse.move(bottomRight.x - 0, bottomRight.y - 0);
+      await page.mouse.move(bottomRight.x - 2, bottomRight.y - 2);
       await page.mouse.down();
       await page.mouse.move(topRight.x, topRight.y);
       await page.mouse.up();
       let newMesures = await getMesures();
       expect(newMesures.height).toBeGreaterThanOrEqual(min);
       await page.mouse.move(
-        newMesures.bottomRight.x - 0,
-        newMesures.bottomRight.y - 0
+        newMesures.bottomRight.x - 2,
+        newMesures.bottomRight.y - 2
       );
       await page.mouse.down();
       await page.mouse.move(bottomRight.x, bottomRight.y);
@@ -225,8 +225,8 @@ describe("The object should be scalable by dragging the corners", () => {
           let initialHeight = height;
           let corner = eval(cor);
           let opCorner = eval(opposites[cor]);
-          let startingX = Left ? corner.x + 0 : corner.x - 0;
-          let startingY = Top ? corner.y + 0 : corner.y - 0;
+          let startingX = Left ? corner.x + 2 : corner.x - 2;
+          let startingY = Top ? corner.y + 2 : corner.y - 2;
           let targetX = Left ? corner.x + 75 : corner.x - 75;
           let targetY = Top ? corner.y + 75 : corner.y - 75;
           await page.mouse.move(startingX, startingY);
@@ -265,8 +265,8 @@ describe("The object should be scalable by dragging the corners", () => {
           let initialHeight = height;
           let corner = eval(cor);
           let opCorner = eval(opposites[cor]);
-          let startingX = Left ? corner.x + 0 : corner.x - 0;
-          let startingY = Top ? corner.y + 0 : corner.y - 0;
+          let startingX = Left ? corner.x + 2 : corner.x - 2;
+          let startingY = Top ? corner.y + 2 : corner.y - 2;
           let targetX = Left ? corner.x - 75 : corner.x + 75;
           let targetY = Top ? corner.y - 75 : corner.y + 75;
           await page.mouse.move(startingX, startingY);
@@ -321,8 +321,8 @@ describe("The object should be scalable by dragging the corners", () => {
             bottomRight,
           } = await getMesures();
           let corner = eval(cor);
-          let startingX = Left ? corner.x + 0 : corner.x - 0;
-          let startingY = Top ? corner.y + 0 : corner.y - 0;
+          let startingX = Left ? corner.x + 2 : corner.x - 2;
+          let startingY = Top ? corner.y + 2 : corner.y - 2;
           let targetX =
             dir === "left"
               ? playgroundRects.left - 10
