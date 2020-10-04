@@ -10,9 +10,9 @@ function dragAndResizeElement(element) {
     .querySelector("#playground")
     .getBoundingClientRect();
 
-  if (document.getElementById(element.id + "-header")) {
+  if (document.getElementById("header")) {
     // if present, the header is where you move the DIV from:
-    document.getElementById(element.id + "-header").onmousedown = dragMouseDown;
+    document.getElementById("header").onmousedown = dragMouseDown;
   } else {
     // otherwise, move the DIV from anywhere inside the DIV:
     element.onmousedown = dragMouseDown;
