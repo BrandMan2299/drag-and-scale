@@ -1,15 +1,15 @@
 const puppeteer = require("puppeteer");
 
 const ourElement = "#main";
-const ourHeader = "#main-header";
-const url = "file:///C:/Users/dor1k/Desktop/drag-and-scale/playground.html";
+const ourHeader = "#header";
+const url = `file://${__dirname}/../index.html`;
 const minimumWidth = 100;
 const minimumHeight = 100;
 
 beforeAll(async () => {
     browser = await puppeteer.launch({
-        headless: false,
-        slowMo: 250,
+        // headless: false,
+        // slowMo: 250,
         // args: ['--start-fullscreen']
     });
     page = await browser.newPage();

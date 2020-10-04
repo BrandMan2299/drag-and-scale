@@ -1,6 +1,5 @@
 const puppeteer = require("puppeteer");
-const url =
-  "file:///C:/Users/gilad/Desktop/scaleUp/LavaDragons/DragableScaleableChalenge/drag-and-scale/index.html";
+const url = `file://${__dirname}/../index.html`;
 //'file://' + __dirname + '/../_cloned-app/index.html'
 let id = "#main";
 
@@ -127,14 +126,14 @@ describe("The object should be scalable by dragging the corners", () => {
           direction === "Vertically"
             ? bottomRight.x - 2
             : action === "Enlarge"
-            ? bottomRight.x + 75
-            : bottomRight.x - 75;
+              ? bottomRight.x + 75
+              : bottomRight.x - 75;
         let targetY =
           direction === "Horizantly"
             ? bottomRight.y - 2
             : action === "Enlarge"
-            ? bottomRight.y + 75
-            : bottomRight.y - 75;
+              ? bottomRight.y + 75
+              : bottomRight.y - 75;
         await page.mouse.move(targetX, targetY);
         await page.mouse.up();
         let newMesures = await getMesures();
@@ -311,8 +310,8 @@ describe("The object should be scalable by dragging the corners", () => {
               ? "top"
               : "bottom"
             : Left
-            ? "left"
-            : "right";
+              ? "left"
+              : "right";
         test(`The box's borders cannot surpass the ${dir} playground borders`, async (done) => {
           let {
             topLeft,
@@ -327,14 +326,14 @@ describe("The object should be scalable by dragging the corners", () => {
             dir === "left"
               ? playgroundRects.left - 10
               : dir === "right"
-              ? playgroundRects.right + 10
-              : startingX;
+                ? playgroundRects.right + 10
+                : startingX;
           let targetY =
             dir === "top"
               ? playgroundRects.top - 10
               : dir === "bottom"
-              ? playgroundRects.bottom + 10
-              : startingY;
+                ? playgroundRects.bottom + 10
+                : startingY;
           await page.mouse.move(startingX, startingY);
           await page.mouse.down();
           await page.mouse.move(targetX, targetY);

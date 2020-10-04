@@ -9,7 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "jest": "^26.4.2",
     "puppeteer": "^5.3.1"
   }

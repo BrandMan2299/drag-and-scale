@@ -1,5 +1,5 @@
 const puppeteer = require("puppeteer");
-describe("dragging box", async () => {
+describe("dragging box", () => {
   test("dragging", async () => {
     const browser = await puppeteer.launch(
       // {
@@ -7,12 +7,12 @@ describe("dragging box", async () => {
       //   slowMo: 100,
       // }
     );
-    const url =
-      "file:///C:/Users/itaib/Desktop/cyber4s/Mine/drag-and-scale/dragging-test/index.html";
+    const url = `file://${__dirname}/../index.html`
+
     const page = await browser.newPage();
     await page.goto(url);
 
-    const header = await page.$('#mydivheader');
+    const header = await page.$('#header');
 
     const { top, left } = await page.evaluate((header) => {
       let { top, left } = header.getBoundingClientRect();
@@ -43,20 +43,23 @@ describe("dragging box", async () => {
       //   slowMo: 100,
       // }
     );
-    const url = "file:///C:/Users/itaib/Desktop/cyber4s/Mine/drag-and-scale/dragging-test/index.html";
+    const url = `file://${__dirname}/../index.html`
     const page = await browser.newPage();
     await page.goto(url);
 
-    const vpWidth = page.viewport().width;
-    const vpHeight = page.viewport().height;
+    const playground = await page.$('#playground');
+    const { playTop, playLeft, playBottom, playRight } = await page.evaluate((playground) => {
+      let { top, left, right, bottom } = box.getBoundingClientRect();
+      return { playTop: top, playLeft: left, playtBottom: bottom, playRight: right };
+    }, playground);
 
-    const box = await page.$('#mydiv');
+    const box = await page.$('#main');
     const { boxWidth, boxHeight } = await page.evaluate((box) => {
       let { width, height } = box.getBoundingClientRect();
       return { boxWidth: width, boxHeight: height };
     }, box);
 
-    const header = await page.$('#mydivheader');
+    const header = await page.$('#header');
 
     const { y, x } = await page.evaluate((header) => {
       let { top, left, width, height } = header.getBoundingClientRect();
@@ -65,7 +68,7 @@ describe("dragging box", async () => {
 
     await page.mouse.move(x, y);
     await page.mouse.down();
-    await page.mouse.move(vpWidth, vpHeight);
+    await page.mouse.move(playBottom, playRight);
     await page.mouse.up();
 
     const { newTop, newLeft } = await page.evaluate((box) => {
@@ -73,8 +76,8 @@ describe("dragging box", async () => {
       return { newTop: top, newLeft: left };
     }, box);
 
-    expect(newLeft).toBe(vpWidth - boxWidth);
-    expect(newTop).toBe(vpHeight - boxHeight);
+    expect(newLeft).toBe(playRight - boxWidth);
+    expect(newTop).toBe(playBottom - boxHeight);
 
     await browser.close();
   })

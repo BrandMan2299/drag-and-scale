@@ -19,7 +19,7 @@
   box-shadow: -4px 6px 3px rgba(20, 20, 20, 0.7);
 }
 
-#main-header {
+#header {
   background-color: rgb(70, 70, 70);
   position: relative;
   width: inherit;
@@ -31,7 +31,7 @@
   color: white;
 }
 
-#main-header:hover {
+#header:hover {
   cursor: move;
 }
 
