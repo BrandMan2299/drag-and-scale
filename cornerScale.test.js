@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
 const url =
   "file:///C:/Users/gilad/Desktop/scaleUp/LavaDragons/DragableScaleableChalenge/drag-and-scale/playground.html";
-
+//'file://' + __dirname + '/../_cloned-app/index.html'
 let id = "#window";
 
 describe("The object should be scalable by dragging the corners", () => {
