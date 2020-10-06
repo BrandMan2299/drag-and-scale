@@ -131,12 +131,13 @@ describe("resize by sides", () => {
         );
         await page.mouse.move(right - 1, verticalCenter);
         await page.mouse.down();
-        await page.mouse.move(right - 21, verticalCenter);
+        await page.mouse.move(right - 40, verticalCenter);
         await page.mouse.up();
         const widthAfter = await page.evaluate((element) => {
             return element.offsetWidth;
         }, element);
-        expect(widthAfter).toBeGreaterThanOrEqual(widthBefor - 20);
+        expect(widthAfter).toBeGreaterThanOrEqual(widthBefor - 55);
+        expect(widthAfter).toBeLessThenOrEqual(widthBefor - 25);
     }, 9000000);
     test("Can be reduced horizontal - left side", async () => {
         element = await page.$(ourElement);
@@ -153,12 +154,13 @@ describe("resize by sides", () => {
         );
         await page.mouse.move(left + 1, verticalCenter);
         await page.mouse.down();
-        await page.mouse.move(left + 21, verticalCenter);
+        await page.mouse.move(left + 40, verticalCenter);
         await page.mouse.up();
         const widthAfter = await page.evaluate((element) => {
             return element.offsetWidth;
         }, element);
-        expect(widthAfter).toBeGreaterThanOrEqual(widthBefor - 20);
+        expect(widthAfter).toBeGreaterThanOrEqual(widthBefor - 55);
+        expect(widthAfter).toBeLessThenOrEqual(widthBefor - 25);
     }, 9000000);
 
     test("Can be reduced vertically - bottom", async () => {
@@ -176,12 +178,13 @@ describe("resize by sides", () => {
         );
         await page.mouse.move(horizontalCenter, bottom - 1);
         await page.mouse.down();
-        await page.mouse.move(horizontalCenter, bottom - 21);
+        await page.mouse.move(horizontalCenter, bottom - 40);
         await page.mouse.up();
         const heightAfter = await page.evaluate((element) => {
             return element.offsetHeight;
         }, element);
-        expect(heightAfter).toBeGreaterThanOrEqual(heightBefor - 20);
+        expect(widthAfter).toBeGreaterThanOrEqual(widthBefor - 55);
+        expect(widthAfter).toBeLessThenOrEqual(widthBefor - 25);
     }, 9000000);
     test("Can be reduced vertically - top", async () => {
         element = await page.$(ourElement);
@@ -198,12 +201,13 @@ describe("resize by sides", () => {
         );
         await page.mouse.move(horizontalCenter, top + 1);
         await page.mouse.down();
-        await page.mouse.move(horizontalCenter, top + 21);
+        await page.mouse.move(horizontalCenter, top + 40);
         await page.mouse.up();
         const heightAfter = await page.evaluate((element) => {
             return element.offsetHeight;
         }, element);
-        expect(heightAfter).toBeGreaterThanOrEqual(heightBefor - 20);
+        expect(widthAfter).toBeGreaterThanOrEqual(widthBefor - 55);
+        expect(widthAfter).toBeLessThenOrEqual(widthBefor - 25);
     }, 9000000);
 }, 9000000);
 
