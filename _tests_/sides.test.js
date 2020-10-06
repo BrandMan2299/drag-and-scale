@@ -183,8 +183,8 @@ describe("resize by sides", () => {
         const heightAfter = await page.evaluate((element) => {
             return element.offsetHeight;
         }, element);
-        expect(widthAfter).toBeGreaterThanOrEqual(widthBefor - 55);
-        expect(widthAfter).toBeLessThenOrEqual(widthBefor - 25);
+        expect(heightAfter).toBeGreaterThanOrEqual(heightBefor - 55);
+        expect(heightAfter).toBeLessThenOrEqual(heightBefor - 25);
     }, 9000000);
     test("Can be reduced vertically - top", async () => {
         element = await page.$(ourElement);
@@ -206,8 +206,8 @@ describe("resize by sides", () => {
         const heightAfter = await page.evaluate((element) => {
             return element.offsetHeight;
         }, element);
-        expect(widthAfter).toBeGreaterThanOrEqual(widthBefor - 55);
-        expect(widthAfter).toBeLessThenOrEqual(widthBefor - 25);
+        expect(heightAfter).toBeGreaterThanOrEqual(heightBefor - 55);
+        expect(heightAfter).toBeLessThenOrEqual(heightBefor - 25);
     }, 9000000);
 }, 9000000);
 
